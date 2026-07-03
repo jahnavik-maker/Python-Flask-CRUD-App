@@ -33,9 +33,10 @@ def insert():
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
+        age = request.form['age']
 
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO students(name, email, phone) VALUES(%s, %s, %s)", (name, email, phone))
+        cur.execute("INSERT INTO students(name, email, phone) VALUES(%s, %s, %s, %s)", (name, email, phone, age))
         mysql.connection.commit()
         return redirect(url_for('index'))
 
@@ -48,13 +49,14 @@ def update():
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
+        age = request.form['age']
 
         cur = mysql.connection.cursor()
         cur.execute("""
         UPDATE students
-        SET name=%s, email=%s, phone=%s
+        SET name=%s, email=%s, phone=%s, age=%s
         WHERE id=%s
-        """, (name, email, phone, id_data))
+        """, (name, email, phone, age, id_data))
         mysql.connection.commit()
         return redirect(url_for('index'))
 

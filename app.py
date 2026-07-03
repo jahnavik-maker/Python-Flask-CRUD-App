@@ -28,7 +28,7 @@ def index():
 @app.route('/insert', methods=['POST'])
 def insert():
     if request.method == "POST":
-        flash("Data Inserted Successfully!")
+        flash("Student Added Successfully!")
 
         name = request.form['name']
         email = request.form['email']
@@ -42,7 +42,7 @@ def insert():
 @app.route('/update', methods=['POST','GET'])
 def update():
     if request.method == "POST":
-        flash("Data Updated Successfully")
+        flash("Student Updated Successfully")
 
         id_data = request.form['id']
         name = request.form['name']
@@ -60,7 +60,7 @@ def update():
 
 @app.route('/delete/<string:id_data>', methods=['POST','GET'])
 def delete(id_data):
-    flash("Data Deleted Successfully")
+    flash("Student Deleted Successfully")
 
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM students WHERE id=%s", (id_data))

@@ -46,6 +46,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Age</th>
                         <th>Action</th>
                     </tr>
                     {% for row in students %}
@@ -54,6 +55,7 @@
                         <td>{{row.1}}</td>
                         <td>{{row.2}}</td>
                         <td>{{row.3}}</td>
+                        <td>{{row.4}}</td>
                         <td>
                             <a href="/update/{{row.0}}" class="btn button btn-xs" data-toggle="modal" data-target="#modal-edit{{row.0}}"><i class="fas fa-edit"></i></a>
                             <a href="/delete/{{row.0}}" class="btn delete-button btn-xs" onclick="return confirm('Are you sure to delete?')"><i class="fas fa-trash"></i></a>
@@ -82,6 +84,10 @@
                             <div class="form-group">
                                 <label for="phone">Phone:</label>
                                 <input type="tel" name="phone" class="form-control" value="{{row.3}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="number" name="age" class="form-control" value="{{row.4}}">
                             </div>
                             <div class="form-group">
                                 <button class="btn main-btn" name="submit" type="submit">Update Data</button>
@@ -124,6 +130,11 @@
                                 <label for="phone">Phone:</label>
                                 <input type="tel" name="phone" id="phone" class="form-control" placeholder="Enter your phone number" required="1">
                             </div>
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="number" name="age" id="age" class="form-control" placeholder="Enter your age" required="1">
+                            </div>
+
                             <div class="form-group">
                                 <button class="btn main-btn" name="submit" type="submit">Insert Data</button>
                             </div>

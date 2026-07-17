@@ -1,0 +1,38 @@
+pipeline {
+ 
+    agent any
+ 
+    stages {
+ 
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/jahnavik-maker/Python-Flask-CRUD-App.git'
+            }
+        }
+ 
+ 
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                docker build \
+                -t flask-crud-app \
+                ./application
+                '''
+            }
+        }
+ 
+ 
+        stage('Deploy using Helm') {
+            steps {
+                sh '''
+                helm upgrade --install flask-app \
+                ./helm/application-chart \
+                -n deneb
+                '''
+            }
+        }
+    }
+}
+GitHub - jahnavik-maker/Python-Flask-CRUD-App: Python-Flask Web Application CRUD App with MySQL Database
+Python-Flask Web Application CRUD App with MySQL Database - jahnavik-maker/Python-Flask-CRUD-App
+ 
